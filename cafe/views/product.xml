@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <!--    form View-->
+
+    <record id="product_view_form" model="ir.ui.view">
+        <field name="name">product Information</field>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="id"/>
+                        <field name="image" widget="image" class="oe_avatar"/>
+                        <field name="name"/>
+                        <field name="code"/>
+                    </group>
+
+                    <group>
+
+                        <field name="cost_price"/>
+                        <field name="sale_price"/>
+                        <field name="gpm"/>
+                        <field name="taxes" widget="many2many_tags"/>
+                    </group>
+
+                </sheet>
+
+            </form>
+
+        </field>
+    </record>
+
+    <!--    Tree View-->
+    <record id="product_view_tree" model="ir.ui.view">
+        <field name="name">product Information</field>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="cost_price"/>
+                <field name="sale_price"/>
+                <field name="gpm"/>
+                <field name="taxes" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!--    Action -->
+
+    <record model="ir.actions.act_window" id="product_action">
+        <field name="name">product</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!--    menu form-->
+    <menuitem id="cafe_management_menu_root" name="Cafe Management"
+              sequence="1"/>
+    <menuitem id="cafe_menu" name="Product"
+              parent='cafe_management_menu_root' action="product_action" sequence="1"/>
+
+</odoo>

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <!--    form View-->
+
+    <record id="tax_view_form" model="ir.ui.view">
+        <field name="name">tax Information</field>
+        <field name="model">tax.tax</field>
+        <field name="arch" type="xml">
+            <form>
+
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+
+                    </group>
+
+
+
+                </sheet>
+
+            </form>
+
+        </field>
+    </record>
+
+    <!--    Tree View-->
+    <record id="tax_view_tree" model="ir.ui.view">
+        <field name="name">tax Information</field>
+        <field name="model">tax.tax</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="code"/>
+            </tree>
+        </field>
+    </record>
+;;;
+
+    <!--    Action -->
+
+    <record model="ir.actions.act_window" id="tax_action">
+        <field name="name">tax</field>
+        <field name="res_model">tax.tax</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!--    menu form-->
+
+    <menuitem id="tax_management" name="Tax Management"
+              parent='cafe_management_menu_root' sequence="3"/>
+    <menuitem id="tax_menu" name="Taxes"
+              parent='tax_management' action="tax_action" sequence="1"/>
+
+</odoo>

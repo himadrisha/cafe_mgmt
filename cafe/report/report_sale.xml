@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <record id="report_list_sale" model="ir.actions.report">
+        <field name="name">List Report</field>
+        <field name="model">sale.sale</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">cafe.sale_report_data</field>
+        <field name="report_file">cafe.sale_report_data</field>
+        <field name="binding_model_id" ref="cafe.model_sale_sale"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="sale_report_data">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+
+                        <h1 align="center">Sale Report</h1>
+
+                        <br></br>
+                        <br></br>
+                        <br></br>
+
+                        <div>
+                            <table style="border: 0px solid black; border-spacing: 30px;">
+                                <tr style="border: 0px solid black;  border-collapse: collapse;">
+                                    <th style="border: 0px solid black;  border-collapse: collapse; font-size: 40px;
+                                                   padding: 15px;">
+                                        Customer :-
+                                    </th>
+
+                                    <td style="border: 0px solid black;  border-collapse: collapse; font-size: 40px; padding: 15px;">
+                                        <t t-esc="o.customer.name"/>
+
+                                    </td>
+                                </tr>
+                                    <tr style="border: 0px solid black;  border-collapse: collapse;">
+                                        <th style="border: 0px solid black;  border-collapse: collapse; font-size: 40px;">
+                                            Date :-
+                                        </th>
+                                        <td style="border: 0px solid black;  border-collapse: collapse; font-size: 40px; padding: 15px;">
+                                            <t t-esc="o.date"/>
+                                        </td>
+                                    </tr>
+
+                                    <tr style="border: 0px solid black;  border-collapse: collapse;">
+                                        <th style="border: 0px solid black;  border-collapse: collapse; font-size: 40px;">
+                                            Untaxed Amount :-
+                                        </th>
+                                        <td style="border: 0px solid black;  border-collapse: collapse; font-size: 40px; padding: 15px;">
+                                            <t t-esc="o.untaxed"/>
+                                        </td>
+                                    </tr>
+
+                                    <tr style="border: 0px solid black;  border-collapse: collapse;">
+                                        <th style="border: 0px solid black;  border-collapse: collapse; font-size: 40px;">
+                                            Untaxed Amount :-
+                                        </th>
+                                        <td style="border: 0px solid black;  border-collapse: collapse; font-size: 40px; padding: 15px;">
+                                            <t t-esc="o.untaxed"/>
+                                        </td>
+                                    </tr>
+                                    <tr style="border: 0px solid black;  border-collapse: collapse;">
+                                        <th style="border: 0px solid black;  border-collapse: collapse; font-size: 40px;">
+                                            Tax Amount :-
+                                        </th>
+                                        <td style="border: 0px solid black;  border-collapse: collapse; font-size: 40px; padding: 15px;">
+                                            <t t-esc="o.tax"/>
+                                        </td>
+                                    </tr>
+                                    <tr style="border: 0px solid black;  border-collapse: collapse;">
+                                        <th style="border: 0px solid black;  border-collapse: collapse; font-size: 40px;">
+                                             Total :-
+                                        </th>
+                                        <td style="border: 0px solid black;  border-collapse: collapse; font-size: 40px; padding: 15px;">
+                                            <t t-esc="o.total"/>
+                                        </td>
+                                    </tr>
+
+
+
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
+

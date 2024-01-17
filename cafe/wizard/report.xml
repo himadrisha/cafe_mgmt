@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<odoo>
+    <!--    form View-->
+
+    <record id="report_wizard_form" model="ir.ui.view">
+        <field name="name">report wizard Information</field>
+        <field name="model">report.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+
+                <group>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+
+                    <footer>
+                        <button string="Report IN Tree" type="object" class="btn-secondary" name="select_record"/>
+                    </footer>
+                </group>
+            </form>
+
+        </field>
+    </record>
+
+    <!--    Tree View-->
+
+
+    <!--    Action -->
+
+    <record model="ir.actions.act_window" id="report_action">
+        <field name="name">report wizard</field>
+        <field name="res_model">report.wizard</field>
+        <field name="view_mode">form</field>
+         <field name="target">new</field>
+    </record>
+
+
+    <!--    menu form-->
+
+    <menuitem id="report_menu" name="Report"
+              parent='cafe_management_menu_root' action="report_action" sequence="5"/>
+
+</odoo>

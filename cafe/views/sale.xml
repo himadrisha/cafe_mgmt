@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <!--    form View-->
+
+    <record id="sale_view_form" model="ir.ui.view">
+        <field name="name">sale Information</field>
+        <field name="model">sale.sale</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+
+                    <button name="confirm_data" type="object" class="oe_highlight" string="Confirm Sale"/>
+                    <button name="done_data" type="object" class="oe_highlight" string="Done Sale"/>
+                    <button name="cancel_data" type="object" class="oe_highlight" string="Cancel Sale"/>
+                    <button name="delete_data" type="object" class="oe_highlight" string="Delete Sale"/>
+
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="customer" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="date" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="untaxed" attrs="{'readonly':[('state','!=','draft')]}" readonly="1"/>
+                    </group>
+
+                    <group>
+                        <field name="tax" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="total" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="order_ids"/>
+                        <field name="tax_ids" readonly="1"/>
+                        <field name="himadri"/>
+
+                    </group>
+
+                </sheet>
+
+            </form>
+
+        </field>
+    </record>
+
+    <!--    Tree View-->
+    <record id="sale_view_tree" model="ir.ui.view">
+        <field name="name">sale Information</field>
+        <field name="model">sale.sale</field>
+        <field name="arch" type="xml">
+            <tree>
+                <header>
+                    <button name="draft_data" type="object" class="oe_highlight" string="Draft  Sale"/>
+                </header>
+                <field name="customer"/>
+                <field name="date"/>
+                <field name="untaxed"/>
+                <field name="tax"/>
+                <field name="total"/>
+                <field name="himadri"/>
+
+                <!--decoration-success  -&ndash;&gt; green-->
+                <!--decoration-info     -&ndash;&gt; blue-->
+                <!--decoration-danger -&ndash;&gt;  red-->
+                <!--decoration-muted -&ndash;&gt; black-->
+                <field name="state"
+                       decoration-success="state == 'confirmed'"
+                       decoration-info="state == 'draft'"
+                       decoration-danger="state == 'canceled'"
+                       decoration-muted="state == 'done'"
+
+                       widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!--    Action -->
+
+    <record model="ir.actions.act_window" id="sale_action">
+        <field name="name">sale</field>
+        <field name="res_model">sale.sale</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!--    menu form-->
+    <menuitem id="cafe_management_menu_root" name="Cafe Management"
+              sequence="1"/>
+    <menuitem id="sale_menu" name="Sale"
+              parent='cafe_management_menu_root' action="sale_action" sequence="2"/>
+
+</odoo>

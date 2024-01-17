@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <!--    form View-->
+
+    <record id="taxlines_view_form" model="ir.ui.view">
+        <field name="name">taxlines Information</field>
+        <field name="model">taxlines.taxlines</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="id"/>
+                        <field name="tax_id"/>
+                        <field name="b_price"/>
+                    </group>
+
+                    <group>
+                        <field name="percentage"/>
+                        <field name="tax_amount"/>
+                        <field name="sale_id"/>
+
+                    </group>
+
+                </sheet>
+
+            </form>
+
+        </field>
+    </record>
+
+    <!--    Tree View-->
+    <record id="taxlines_view_tree" model="ir.ui.view">
+        <field name="name">taxlines Information</field>
+        <field name="model">taxlines.taxlines</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id"/>
+                <field name="tax_id"/>
+                <field name="b_price"/>
+                <field name="percentage"/>
+                <field name="tax_amount"/>
+                <field name="sale_id"/>
+
+            </tree>
+        </field>
+    </record>
+
+
+    <!--    Action -->
+
+    <record model="ir.actions.act_window" id="taxlines_action">
+        <field name="name">taxlines</field>
+        <field name="res_model">taxlines.taxlines</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!--    menu form-->
+    <menuitem id="taxlines_menu" name="Tax Lines"
+              parent='tax_management' action="taxlines_action" sequence="2"/>
+
+</odoo>
